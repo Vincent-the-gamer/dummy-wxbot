@@ -13,10 +13,11 @@
 
 ## 使用该项目
 
-1. 修改`src/webhook.py`，填入大语言模型的token然后启动，
-2. 到**SmSForwarder**配置消息转发规则：当App包名是：`com.tencent.mm`时转发到webhook
-3. 使用`adb`无线连接到安卓手机
-4. 切换输入法至**ADBKeyBoard**，将微信打开到你要进行交互的对话框，然后点击输入框，记得提前设置关闭回车换行，即让回车变为发送消息
+1. 大模型接入的是[GPTGod](https://gptgod.site/)的服务，修改`plugins/deepseek.py`，填入大语言模型的token即可
+2. 启动`src/webhook.py`
+3. 到**SmSForwarder**配置消息转发规则：当App包名是：`com.tencent.mm`时转发到webhook
+4. 使用`adb`无线连接到安卓手机
+5. 切换输入法至**ADBKeyBoard**，将微信打开到你要进行交互的对话框，然后点击输入框，记得提前设置关闭回车换行，即让回车变为发送消息
 
 ![wx2.png](.github/wx2.png)
 ![wx1.png](.github/wx1.png)
