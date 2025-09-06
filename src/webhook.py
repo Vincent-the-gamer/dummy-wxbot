@@ -2,7 +2,7 @@
 from time import sleep
 from flask import Flask, request, jsonify
 from sender import send_wechat_msg, open_wechat, open_forwarder
-from src.plugins.deepseek import mesugaki_txt, deepseek_chat
+from plugins.deepseek import mesugaki_txt, deepseek_chat
 import json
 app = Flask(__name__)
 
