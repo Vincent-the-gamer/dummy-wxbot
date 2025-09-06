@@ -2,10 +2,10 @@ import http.client
 import json
 import os
 
-src_path = os.path.abspath("./src")
+current_path = os.path.abspath(os.path.dirname(__file__))
 
 # 雌小鬼守则
-mesugaki = open(os.path.join(src_path, "prompts/雌小鬼守则.txt"), "r")
+mesugaki = open(os.path.join(current_path, "../prompts/雌小鬼守则.txt"), "r")
 mesugaki_txt = mesugaki.read()
 
 headers = {
