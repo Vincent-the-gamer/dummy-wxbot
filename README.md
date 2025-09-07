@@ -2,6 +2,8 @@
 
 用笨办法实现的微信小bot，采用Webhook消息推送 + ADB自动化实现。
 
+_PS: 原则上这种方法可应用于任何聊天软件_
+
 ## 需要安装的安卓软件
 
 必须安装：
@@ -13,7 +15,11 @@
 
 ## 使用该项目
 
-1. 大模型接入的是[GPTGod](https://gptgod.site/)的服务，修改`plugins/deepseek.py`，填入大语言模型的token即可
+1. 大模型接入的是[GPTGod](https://gptgod.site/)的服务，在项目根目录创建`.env`文件，填入大语言模型的token即可：
+```dotenv
+token=xxxx
+```
+
 2. 启动`src/webhook.py`
 3. 到**SmSForwarder**配置消息转发规则：当App包名是：`com.tencent.mm`时转发到webhook
 4. 使用`adb`无线连接到安卓手机
