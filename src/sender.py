@@ -1,4 +1,4 @@
-# 使用电脑有线连接安卓手机，通过adb实现微信消息发送
+# 使用电脑有线连接安卓手机, 或者无线连接adb，然后通过adb实现微信消息发送
 import subprocess
 from time import sleep
 

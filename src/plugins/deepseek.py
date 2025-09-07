@@ -7,6 +7,10 @@ env_vars = dotenv_values()
 
 current_path = os.path.abspath(os.path.dirname(__file__))
 
+# 默认System角色
+default = open(os.path.join(current_path, "../prompts/默认.txt"), "r")
+default_txt = default.read()
+
 # 雌小鬼守则
 mesugaki = open(os.path.join(current_path, "../prompts/雌小鬼守则.txt"), "r")
 mesugaki_txt = mesugaki.read()

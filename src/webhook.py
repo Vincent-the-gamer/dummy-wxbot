@@ -5,21 +5,24 @@ from flask import Flask, request, jsonify
 from sender import send_wechat_msg, open_wechat, open_forwarder
 from plugins.deepseek import mesugaki_txt, deepseek_chat, neko_txt
 from plugins.glot_io import run_python
-
+from src.plugins.deepseek import default_txt
 
 app = Flask(__name__)
 
 roles = {
+    "DeepSeek": default_txt,
     "雌小鬼": mesugaki_txt,
     "猫娘": neko_txt
 }
+
+current_role = "DeepSeek"
 
 payload = {
    "model": "deepseek-r1",
    "messages": [
       {
          "role": "system",
-         "content": roles["雌小鬼"]
+         "content": roles["DeepSeek"]
       },
    ],
    "stream": False
@@ -27,6 +30,7 @@ payload = {
 
 @app.route('/')
 def get_wechat_msg():
+    global current_role
     msg = request.args.get('msg')
     # 目前群消息格式：[4条]天堂制造: （
     # 私聊则是直接发送消息，所以要做正则过滤
@@ -46,6 +50,7 @@ def get_wechat_msg():
     调用AI对话: /ai <对话内容>
     查看角色列表: /list_role
     切换角色: /role <角色名称>
+    查看当前角色: /current_role
     跑Python代码: /python <代码>"""
         open_wechat()
         sleep(1)
@@ -75,7 +80,7 @@ def get_wechat_msg():
 
     # 显示角色
     elif '/list_role' in msg:
-        resp = "使用 /role <角色名> 来切换角色\n 当前可用角色有：\n"
+        resp = "使用 /role <角色名> 来切换角色\n当前可用角色有：\n"
         for key in roles:
             resp += key + "\n"
         open_wechat()
@@ -87,6 +92,7 @@ def get_wechat_msg():
     # 切换角色
     elif '/role' in msg:
         msg = msg.replace('/role', '').strip()
+        current_role = msg
         if msg in roles:
             payload["messages"][0]["content"] = roles[msg]
             open_wechat()
@@ -109,6 +115,14 @@ def get_wechat_msg():
         sleep(1)
         message = f"stdout: \n{stdout} \nstderr: \n{stderr}"
         send_wechat_msg(message)
+        sleep(1)
+        open_forwarder()
+
+    elif '/current_role' in msg:
+        msg = msg.replace('/current_role', '').strip()
+        open_wechat()
+        sleep(1)
+        send_wechat_msg(f"当前角色：{current_role}")
         sleep(1)
         open_forwarder()
 
