@@ -30,6 +30,10 @@ token=xxxx
 
 5. 回到**SmSForwarder**，一切准备就绪，这时可以开始交互了
 
+## 交互
+
+使用`/help`查看指令列表。
+
 ## 演示
 
 https://github.com/user-attachments/assets/e75611f7-8ce1-497c-ae88-25c961777393
