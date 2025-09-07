@@ -21,9 +21,16 @@ token=xxxx
 ```
 
 2. 启动`src/webhook.py`
-3. 到**SmSForwarder**配置消息转发规则：当App包名是：`com.tencent.mm`时转发到webhook
-4. 使用`adb`无线连接到安卓手机
-5. 切换输入法至**ADBKeyBoard**，将微信打开到你要进行交互的对话框，然后点击输入框，记得提前设置关闭回车换行，即让回车变为发送消息
+3. 到**SmSForwarder**配置Webhook，指向你自己的webhook，注意**消息模板的配置**
+
+![消息模板1.png](.github/%E6%B6%88%E6%81%AF%E6%A8%A1%E6%9D%BF1.png)
+
+4. **SmSForwarder**配置消息转发规则： 当App包名是：`com.tencent.mm`时转发到webhook，注意**自定义模板的配置**
+
+![消息模板2.png](.github/%E6%B6%88%E6%81%AF%E6%A8%A1%E6%9D%BF2.png)
+
+5. 使用`adb`无线连接到安卓手机
+6. 切换输入法至**ADBKeyBoard**，将微信打开到你要进行交互的对话框，然后点击输入框，记得提前设置关闭回车换行，即让回车变为发送消息
 
 ![wx2.png](.github/wx2.png)
 ![wx1.png](.github/wx1.png)
