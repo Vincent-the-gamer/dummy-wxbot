@@ -35,7 +35,50 @@ token=xxxx
 ![wx2.png](.github/wx2.png)
 ![wx1.png](.github/wx1.png)
 
-5. 回到**SmSForwarder**，一切准备就绪，这时可以开始交互了
+5. 重点！！发送消息前一定要将窗口切回到**SmSForwarder**，然后一切准备就绪，这时可以开始交互了
+
+## 使用Termux实现脱离PC端部署
+
+1. 在termux安装android-tools，用于连接本机adb
+```shell
+pkg install android-tools
+```
+
+然后按正常流程:
+- adb配对设备：`adb pair IP:PORT`
+- adb连接设备: `adb connect IP:PORT`
+
+2. 在Termux安装python
+```shell
+pkg install python
+```
+
+3. 将本项目拷贝至termux的home目录: `/data/data/com.termux/files/home`
+> [!WARNING]
+> 1. 不要使用子目录，创建虚拟环境会报`permission denied`
+> 2. 手机上我没有使用poetry，而是用传统的pip，因为poetry在termux这个环境比较麻烦，所以直接用pip
+
+4. cd到项目目录中，创建虚拟环境
+```shell
+python -m venv ./venv
+```
+5. 进入Python虚拟环境
+```shell
+source venv/bin/activate
+
+# fish
+source venv/bin/activate.fish
+```
+
+6. pip安装依赖
+```shell
+pip install flask dotenv requests
+```
+
+7. 启动webhook.py
+```shell
+python src/webhook.py
+```
 
 ## 交互
 
@@ -44,7 +87,6 @@ token=xxxx
 ## 演示
 
 https://github.com/user-attachments/assets/e75611f7-8ce1-497c-ae88-25c961777393
-
 
 ## 开源证书
 
