@@ -5,7 +5,7 @@ from flask import Flask, request, jsonify
 from sender import send_wechat_msg, open_wechat, open_forwarder
 from plugins.deepseek import mesugaki_txt, deepseek_chat, neko_txt
 from plugins.glot_io import run_python
-from src.plugins.deepseek import default_txt
+from plugins.deepseek import default_txt
 
 app = Flask(__name__)
 
