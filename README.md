@@ -2,7 +2,7 @@
 
 用笨办法实现的微信小bot，采用Webhook消息推送 + ADB自动化实现。
 
-_PS: 原则上这种方法可应用于任何聊天软件_
+_PS: 技术上来说，这种方法可应用于任何聊天软件。_
 
 ## 需要安装的安卓软件
 
@@ -53,13 +53,14 @@ pkg install android-tools
 pkg install python
 ```
 
-3. 将本项目拷贝至termux的home目录: `/data/data/com.termux/files/home`
+3. 将本项目拷贝或克隆至termux的home目录: `/data/data/com.termux/files/home`
 > [!WARNING]
 > 1. 不要使用子目录，创建虚拟环境会报`permission denied`
 > 2. 手机上我没有使用poetry，而是用传统的pip，因为poetry在termux这个环境比较麻烦，所以直接用pip
 
 4. cd到项目目录中，创建虚拟环境
 ```shell
+cd /data/data/com.termux/files/home/dummy-wxbot
 python -m venv ./venv
 ```
 5. 进入Python虚拟环境
